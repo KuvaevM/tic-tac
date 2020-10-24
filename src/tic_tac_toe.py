@@ -3,6 +3,8 @@ import random
 
 class TicTacToe:
     def __init__(self, first_player, second_player):
+        """Заводит новое игровое поле. Определяет, какой из двух игроков будет ходить первым. Печатает необходимую
+        информацию """
         self.playing_field = [['0', '0', '0'], ['0', '0', '0'], ['0', '0', '0']]
         first_move = random.randint(0, 1)
         if first_move:
@@ -14,6 +16,7 @@ class TicTacToe:
         print('Второй игрок ходит знаком o')
 
     def whose_move(self):
+        """Возвращает, кто сейчас ходит, крестик или нолик"""
         number_of_zeros = 0
         number_of_crosses = 0
         for i in self.playing_field:
@@ -27,6 +30,8 @@ class TicTacToe:
         return 'o'
 
     def cross_move(self, y_coordinates, x_coordinates):
+        """Записывает в поле с заданными координатами крестик. Если поле не пусто или сейчас не тот ход возбуждает
+        ValueError """
         if self.whose_move() == 'o':
             raise ValueError
         if self.playing_field[x_coordinates][y_coordinates] != '0':
@@ -34,6 +39,8 @@ class TicTacToe:
         self.playing_field[x_coordinates][y_coordinates] = 'x'
 
     def zero_move(self, y_coordinates, x_coordinates):
+        """Записывает в поле с заданными координатами нолик. Если поле не пусто или сейчас не тот ход возбуждает
+        ValueError"""
         if self.whose_move() == 'x':
             raise ValueError
         if self.playing_field[x_coordinates][y_coordinates] != '0':
@@ -41,10 +48,12 @@ class TicTacToe:
         self.playing_field[x_coordinates][y_coordinates] = 'o'
 
     def print_field(self):
+        """Печатает игровое поле"""
         for line in self.playing_field:
             print(line)
 
     def who_is_win(self):
+        """Определяет, кто победил. Если крестик - возвращает x, если нолик - o, а если ничья - tie"""
         columns_and_diagonals = [[], [], [], [], [], []]
         number_of_line = 0
         for line in self.playing_field:
@@ -65,6 +74,7 @@ class TicTacToe:
         return 'tie'
 
     def is_end_of_game(self):
+        """Определяет, закончилась ли игра"""
         if self.who_is_win() == 'x' or self.who_is_win() == 'o':
             return True
         for line in self.playing_field:
