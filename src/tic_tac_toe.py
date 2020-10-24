@@ -26,25 +26,31 @@ class TicTacToe:
             return 'x'
         return 'o'
 
-    def cross_move(self, x_coordinates, y_coordinates):
+    def cross_move(self, y_coordinates, x_coordinates):
         if self.whose_move() == 'o':
             raise ValueError
         if self.playing_field[x_coordinates][y_coordinates] != '0':
             raise ValueError
         self.playing_field[x_coordinates][y_coordinates] = 'x'
 
-    def zero_move(self, x_coordinates, y_coordinates):
+    def zero_move(self, y_coordinates, x_coordinates):
         if self.whose_move() == 'x':
             raise ValueError
         if self.playing_field[x_coordinates][y_coordinates] != '0':
             raise ValueError
         self.playing_field[x_coordinates][y_coordinates] = 'o'
 
+    def print_field(self):
+        for line in self.playing_field:
+            print(line)
+
     # def is_end_of_game(self):
     #     for
 
 
 if __name__ == '__main__':
-    play = TicTacToe('Алёша', 'Вася')
-    print(play.whose_move())
+    game = TicTacToe('Алёша', 'Вася')
+    print(game.whose_move())
+    game.cross_move(0,2)
+    game.print_field()
     # play.cross_move(0, 0)
