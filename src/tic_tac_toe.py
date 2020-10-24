@@ -44,6 +44,27 @@ class TicTacToe:
         for line in self.playing_field:
             print(line)
 
+    def who_is_win(self):
+        columns_and_diagonals = [[], [], [], [], [], []]
+        number_of_line = 0
+        for line in self.playing_field:
+            if line == ['o', 'o', 'o']:
+                return 'o'
+            if line == ['x', 'x', 'x']:
+                return 'x'
+            for number_of_column in range(3):
+                columns_and_diagonals[number_of_column].append(line[number_of_column])
+            columns_and_diagonals[3].append(line[number_of_line])
+            columns_and_diagonals[4].append(line[2-number_of_line])
+            number_of_line += 1
+        for combination in columns_and_diagonals:
+            if combination == ['o', 'o', 'o']:
+                return 'o'
+            if combination == ['x', 'x', 'x']:
+                return 'x'
+        return 'tie'
+
+
     # def is_end_of_game(self):
     #     for
 
