@@ -55,7 +55,7 @@ class TicTacToe:
             for number_of_column in range(3):
                 columns_and_diagonals[number_of_column].append(line[number_of_column])
             columns_and_diagonals[3].append(line[number_of_line])
-            columns_and_diagonals[4].append(line[2-number_of_line])
+            columns_and_diagonals[4].append(line[2 - number_of_line])
             number_of_line += 1
         for combination in columns_and_diagonals:
             if combination == ['o', 'o', 'o']:
@@ -64,14 +64,16 @@ class TicTacToe:
                 return 'x'
         return 'tie'
 
-
-    # def is_end_of_game(self):
-    #     for
+    def is_end_of_game(self):
+        for line in self.playing_field:
+            if '0' in line:
+                return False
+        return True
 
 
 if __name__ == '__main__':
     game = TicTacToe('Алёша', 'Вася')
     print(game.whose_move())
-    game.cross_move(0,2)
+    game.cross_move(0, 2)
     game.print_field()
     # play.cross_move(0, 0)
