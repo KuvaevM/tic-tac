@@ -88,4 +88,3 @@ if __name__ == '__main__':
     print(game.whose_move())
     game.cross_move(0, 2)
     game.print_field()
-
