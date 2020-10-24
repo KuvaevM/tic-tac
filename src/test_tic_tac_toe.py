@@ -60,11 +60,15 @@ class TestTicTacToe(unittest.TestCase):
         self.assertEqual(right_winner, test_winner)
 
     def test_is_end_of_game(self):
-        self.test_game.playing_field = [['o', '0', 'x'], ['o', '0', '0'], ['o', '0', '0']]
+        self.test_game.playing_field = [['o', '0', 'x'], ['o', '0', '0'], ['x', '0', '0']]
         test_answer = self.test_game.is_end_of_game()
         right_answer = False
         self.assertEqual(test_answer, right_answer)
-        self.test_game.playing_field = [['o', 'x', 'x'], ['o', 'o', 'o'], ['o', 'x', 'x']]
+        self.test_game.playing_field = [['o', 'x', 'o'], ['o', 'x', 'o'], ['x', 'o', 'x']]
+        test_answer = self.test_game.is_end_of_game()
+        right_answer = True
+        self.assertEqual(test_answer, right_answer)
+        self.test_game.playing_field = [['o', 'o', 'o'], ['o', 'x', 'o'], ['x', 'o', '0']]
         test_answer = self.test_game.is_end_of_game()
         right_answer = True
         self.assertEqual(test_answer, right_answer)

@@ -65,6 +65,8 @@ class TicTacToe:
         return 'tie'
 
     def is_end_of_game(self):
+        if self.who_is_win() == 'x' or self.who_is_win() == 'o':
+            return True
         for line in self.playing_field:
             if '0' in line:
                 return False
@@ -76,4 +78,4 @@ if __name__ == '__main__':
     print(game.whose_move())
     game.cross_move(0, 2)
     game.print_field()
-    # play.cross_move(0, 0)
+
